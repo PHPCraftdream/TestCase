@@ -1,0 +1,27 @@
+{
+	"name": "phpcraftdream/testcase",
+	"license": "MIT",
+	"type": "library",
+	"version": "1.0.0-dev",
+	"autoload":
+	{
+		"psr-4":
+		{
+			"PHPCraftdream\\TestCase\\": "src/lib/"
+		}
+	},
+	"authors":
+	[
+		{
+			"name": "PHPCraftDream"
+		}
+	],
+	"require":
+	{
+		"phpunit/phpunit": "5.*"
+	},
+	"require-dev":
+	{
+
+	}
+}
