@@ -2,7 +2,6 @@
 	"name": "phpcraftdream/testcase",
 	"license": "MIT",
 	"type": "library",
-	"version": "1.0.0-dev",
 	"autoload":
 	{
 		"psr-4":
