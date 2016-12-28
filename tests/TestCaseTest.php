@@ -43,6 +43,12 @@ class TestCaseTest extends \PHPUnit_Framework_TestCase
 
 		$obj->setPrivate($rand6);
 		$this->assertEquals($rand6, $testCase->getProp($obj, 'propertyPrvate'));
+		
+		$testData = [time(), uniqid(), microtime(), md5(time() . uniqid() . microtime())];
+		$protectedMethod = $testCase->getMethod($obj, 'protectedMethod');
+		$res = $protectedMethod->invoke($obj, ...$testData);
+		
+		$this->assertEquals([$testData, $testData], $res);
 
 		//-------------------------------------------------------
 	}

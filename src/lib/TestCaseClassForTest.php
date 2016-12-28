@@ -29,5 +29,12 @@ namespace PHPCraftdream\TestCase
 		{
 			return $this->propertyPrvate;
 		}
+		
+		protected function protectedMethod()
+		{
+			$arr = func_get_args();
+			
+			return [$arr, $arr];
+		}
 	}
 }
