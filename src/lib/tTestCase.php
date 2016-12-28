@@ -2,11 +2,15 @@
 
 namespace PHPCraftdream\TestCase
 {
+
+	use ReflectionMethod;
+
 	trait tTestCase
 	{
 		//----------------------------------------------------------------------
 		protected $phpcdReflections = array();
 		protected $phpcdProperties = array();
+		protected $phpcdMethods = array();
 
 		//----------------------------------------------------------------------
 		protected function phpcdReflectionExists(string $className)
@@ -70,6 +74,24 @@ namespace PHPCraftdream\TestCase
 			$val = $property->getValue($obj);
 
 			return $val;
+		}
+
+		//----------------------------------------------------------------------
+		public function getMethod($objOrClassName, string $methodName): ReflectionMethod
+		{
+			$className = is_object($objOrClassName) ? get_class($objOrClassName) : $objOrClassName;
+			$key = $className . '->' . $methodName;
+
+			if (!empty($this->phpcdMethods[$key]))
+				return $this->phpcdMethods[$key];
+
+			$reflection = $this->phpcdGetReflection($className);
+			$method = $reflection->getMethod($methodName);
+			$method->setAccessible(true);
+
+			$this->phpcdMethods[$key] = $method;
+
+			return $method;
 		}
 	}
 }
